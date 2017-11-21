@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "import/named": "error",
+    "import/default": "error",
+    "eol-last": ["error", "never"],
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],    
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off" 
+  },
+  "settings": {
+    "import/parser": "babel-eslint"
+  }
+}

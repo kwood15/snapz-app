@@ -1,0 +1,8 @@
+lib
+node_modules
+npm-debug.log
+.yarnclean
+.DS_Store
+.idea/
+yarn-error.log
+.vscode
