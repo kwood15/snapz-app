@@ -1,0 +1,15 @@
+.c-footer {
+  position: absolute;
+  width: 100%;
+  background: $nb-color-beta;
+}
+
+.c-footer__text {
+  color: $nb-color-white;
+  font-weight: bold;
+}
+
+.c-footer__links {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -21,6 +21,18 @@ const common = {
         }]
       },
       {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'file-loader'
+        }]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader'
+        }]
+      },
+      {
         test: /\.svg$/,
         use: [{
           loader: 'svg-sprite-loader'
@@ -52,6 +64,7 @@ const common = {
       }
     ]
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
@@ -66,6 +79,10 @@ const common = {
     })
   ],
   resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src')
+    ],
     extensions: ['.js', '.jsx']
   }
 };

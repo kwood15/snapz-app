@@ -1,7 +1,10 @@
 import React from 'react';
-import { Navbar, Button, Icon } from 'nebula-react';
+import PropTypes from 'prop-types';
+import { Navbar, Form, Icon } from 'nebula-react';
 
-const MainHeader = () => (
+import logo from '../../img/logo.svg';
+
+const Header = ({ brandText }) => (
   <header>
     <Navbar.Wrapper>
       <Navbar.Overlay />
@@ -9,46 +12,47 @@ const MainHeader = () => (
         <Navbar.Toggle.Wrapper>
           <Navbar.Toggle.Bars />
         </Navbar.Toggle.Wrapper>
-        <Navbar.Logo to="/nebula" width="45px">
-          <img src={nebula} alt="React logo" />
+        <Navbar.Logo to="/">
+          <Icon icon={logo} iconPosition="left" width="35px" height="35px" fill="#c3c3c3">
+            {brandText}
+          </Icon>
         </Navbar.Logo>
         <Navbar.ContentWrapper>
           <Navbar.Content>
             <Navbar.Item>
-              <Navbar.Link to="/nebula/planets">
-                Planets
+              <Navbar.Link to="/you/profile">
+                You
               </Navbar.Link>
             </Navbar.Item>
             <Navbar.Dropdown.Wrapper clickOutsideToClose>
-              <Navbar.Dropdown.Toggle className="is-active">
-                Galaxies
+              <Navbar.Dropdown.Toggle>
+                Explore
               </Navbar.Dropdown.Toggle>
               <Navbar.Dropdown.Content>
                 <Navbar.Item>
-                  <Navbar.Link to="/nebula/galaxies/milky-way">
-                    Milky Way
+                  <Navbar.Link to="/explore/create">
+                    Create
                   </Navbar.Link>
                 </Navbar.Item>
                 <Navbar.Item>
-                  <Navbar.Link to="/nebula/galaxies/andromeda" className="is-active">
-                    Andromeda
+                  <Navbar.Link to="/explore/upload">
+                    Upload
                   </Navbar.Link>
                 </Navbar.Item>
               </Navbar.Dropdown.Content>
             </Navbar.Dropdown.Wrapper>
             <Navbar.Item>
-              <Navbar.Link to="/nebula/pulsars">
-                <Icon verticalAlign="middle" width="24px" height="24px" iconPosition="right" icon={lightbulb}>
-                  Pulsars
-                </Icon>
+              <Navbar.Link to="/trending/latest" className="is-active">
+                Trending
               </Navbar.Link>
             </Navbar.Item>
           </Navbar.Content>
           <Navbar.Content right keepAtTop>
             <Navbar.Item tag="div" resetLineHeight>
-              <Button size="sm" theme="alpha">
-                CTA
-              </Button>
+              <Form.SearchWrapper submitPosition="right">
+                <Form.SearchInput small />
+                <Form.SearchSubmit theme="alpha" />
+              </Form.SearchWrapper>
             </Navbar.Item>
           </Navbar.Content>
         </Navbar.ContentWrapper>
@@ -57,4 +61,12 @@ const MainHeader = () => (
   </header>
 );
 
-export default MainHeader;
+Header.defaultProps = {
+  brandText: 'Snapz'
+};
+
+Header.propTypes = {
+  brandText: PropTypes.string
+};
+
+export default Header;

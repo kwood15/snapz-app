@@ -1,17 +1,44 @@
-# Nebula React ![Travis-ci](https://travis-ci.org/NebulaUI/nebula-react.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/NebulaUI/nebula-react/badge.svg?branch=master)](https://coveralls.io/github/rbrtsmith/nebula-react?branch=master) [![npm version](https://badge.fury.io/js/nebula-react.svg)](https://badge.fury.io/js/nebula-react)
+# Snapz App
 
-React Components for the Nebula Sass framework
+A React App which queries the Flickr API
 
 ## Get Started
 
-`yarn add nebula-react`
+- Do a `git clone` on the Repository or download it
+- `cd` into the Project Directory or open it
 
-### Dependencies
+### Do **one** of **each** of the following:
 
-Nebula React has the following peerDependencies.
+- To **install the dependencies**:
+```
+npm install | or | yarn
+``` 
+
+- To **run** it:
+```
+npm start | or | yarn start
+``` 
+
+- To **lint** it:
+```
+npm run lint | or | yarn lint
+```
+
+- To **test** it:
+```
+npm run test | or | yarn test
+```
+
+- To **build** it:
+```
+npm run build | or | yarn build
+``` 
+
+## Dependencies
+
+Snapz App has the following Dependencies.
 * [`react`](https://github.com/facebook/react)
 * [`react-dom`](https://www.npmjs.com/package/react-dom)
-
-And the following dependencies
-* [`nebula-css`](https://github.com/rbrtsmith/nebula-css)
-* [`nebula-components`](https://github.com/rbrtsmith/nebula-components)
+* [`nebula-css`](https://github.com/NebulaUI/nebula-css)
+* [`nebula-components`](https://github.com/NebulaUI/nebula-components)
+* [`nebula-react`](https://github.com/NebulaUI/nebula-react)

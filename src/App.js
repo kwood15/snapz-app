@@ -1,21 +1,23 @@
 import React from 'react';
-import {
-  Section,
-  SiteWrap,
-  Grid
-} from 'nebula-react';
+import { Route } from 'react-router-dom';
+import { Section } from 'nebula-react';
 
-import MainHeader from './components/Layout/Header';
+import Create from './components/Pages/Create';
+
+import Header from './components/Layout/Header';
+import Main from './components/Layout/Main';
+import Footer from './components/Layout/Footer';
 
 const App = () => (
-  <Section size="md">
-    <SiteWrap padding>
-      <Grid.Wrapper matrix gutter="md">
-        <Grid.Item width={['3/4', '1/2@md']}>
-          <MainHeader />
-        </Grid.Item>
-      </Grid.Wrapper>
-    </SiteWrap>
+  <Section>
+    <Route exact path="/" />
+    <Route path="/you" />
+    <Route path="/explore/create" component={Create} />
+    <Route path="/explore/upload" />
+    <Route path="/trending/latest" />
+    <Header />
+    <Main />
+    <Footer />
   </Section>
 );
 

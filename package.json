@@ -1,21 +1,24 @@
 {
-  "name": "flickr-app",
+  "name": "snapz-app",
   "version": "1.0.0",
-  "description": "An app to view images",
+  "description": "A React App which queries the Flickr API",
   "main": "index.js",
   "author": "Kay Wood",
-  "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "lint": "eslint . --ext .js,.jsx",
+    "lint": "eslint . --ext .js, .jsx",
     "unit": "jest",
     "test": "yarn lint && yarn unit"
   },
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "nebula-react": "^0.8.1"
+    "prop-types": "^15.6.0",
+    "react-router-dom": "^4.2.2",
+    "nebula-react": "^0.8.1",
+    "react-html-parser": "^2.0.1",
+    "react-icons": "^2.2.7"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -24,6 +27,7 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-root-import": "^5.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -35,21 +39,25 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "html-webpack-plugin": "^2.29.0",
+    "stylelint": "^8.2.0",
+    "stylelint-config-nebula": "^0.2.0",
+    "stylelint-webpack-plugin": "^0.9.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "stylelint": "^8.2.0",
-    "stylelint-config-nebula": "^0.2.0",
-    "stylelint-webpack-plugin": "^0.9.0",
+    "svg-sprite-loader": "^3.4.1",
+    "url-loader": "^0.6.2",
+    "file-loader": "^1.1.5",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "html-webpack-plugin": "^2.29.0"
   },
   "keywords": [
-    "Flickr",
+    "Snapz",
     "image",
-    "app"
+    "app",
+    "photos"
   ]
 }

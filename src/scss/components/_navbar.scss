@@ -1,0 +1,53 @@
+.c-navbar,
+.c-navbar__inner {
+  background-color: $nb-color-beta;
+}
+
+.c-navbar__logo {
+  color: $nb-color-white;
+}
+
+.c-navbar__link, 
+.c-navbar__dropdown-toggle {
+  color: $nb-color-white;
+  background-color: $nb-color-beta;
+
+  &:hover, &:focus {
+    color: $nb-color-white;
+  }
+}
+
+.c-navbar__dropdown-toggle::after {
+  background-image: url(#{$img-path}/chevron.svg);
+}
+
+.c-navbar__link:hover, 
+.c-navbar__link:focus, .c-navbar__dropdown-toggle:hover, 
+.c-navbar__dropdown-toggle:focus {
+  background-color: lighten($nb-color-beta, 8%);
+}
+
+.c-navbar__link::before, 
+.c-navbar__dropdown-toggle::before {
+  background-color: $nb-color-alpha;
+}
+
+.c-navbar__toggle {
+  background-color: $nb-color-beta;
+}
+
+.c-navbar__toggle-bars, 
+.c-navbar__toggle-bars::before, 
+.c-navbar__toggle-bars::after {
+  background-color: $nb-color-alpha;
+}
+
+.c-navbar__content-wrapper {
+  background-color: $nb-color-beta;
+}
+
+@media (min-width: 800px) {
+  :not(.c-navbar__dropdown) > .c-navbar__item:not(:first-child)::before {
+    background-color: $nb-color-beta;
+  }
+}

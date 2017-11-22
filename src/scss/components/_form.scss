@@ -1,0 +1,9 @@
+.c-search__input {
+  transform: scale(0);
+}
+
+@media (min-width: 720px) {
+  .c-search__input {
+    transform: scale(1);
+  }
+}

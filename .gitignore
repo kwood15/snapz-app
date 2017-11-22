@@ -1,8 +1,10 @@
-lib
+dist/
+
 node_modules
 npm-debug.log
+yarn-error.log
+
 .yarnclean
 .DS_Store
 .idea/
-yarn-error.log
 .vscode
