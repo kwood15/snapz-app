@@ -67,7 +67,7 @@ class Gallery extends Component {
   }
 
   // renderFavList = () => {
-  //   console.log('Hmm');
+  //   console.log('test');
   // };
 
   render() {
