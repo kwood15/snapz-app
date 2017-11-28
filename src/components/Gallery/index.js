@@ -6,10 +6,11 @@ import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
 import GalleryList from './List';
 
 class Gallery extends Component {
-  static propTypes = {
-    // renderFavList: PropTypes.func,
-    // addToFavList: PropTypes.func
-  }
+  // static propTypes = {
+  //   favourites: PropTypes.arrayOf(PropTypes.shape({
+  //     favourite: PropTypes.string
+  //   }))
+  // }
 
   constructor() {
     super();
@@ -17,7 +18,6 @@ class Gallery extends Component {
       loading: true,
       items: [],
       isFavourite: false,
-      favouriteIds: [],
       favourites: []
     };
   }
@@ -29,8 +29,7 @@ class Gallery extends Component {
         loading: false,
         items: response.items,
         isFavourite: false,
-        favouriteIds: [],
-        favourites: []
+        favourites: this.state.favourites
       });
     };
   }
@@ -46,34 +45,32 @@ class Gallery extends Component {
   }
 
   addToFavList = (e) => {
-    e.preventDefault();
-    // const { items } = this.state;
-    const favourites = [];
-    const ids = [];
+    const { items } = this.state;
     const id = e.currentTarget.id;
-    ids.push(id);
+    const favourites = [];
 
-    // items.map((item) => {
-    //   if (item[id] === id) {
-    //     return item;
-    //   }
-    // });
-    // favourites.push(favourites);
+    items.map((item) => {
+      if (id === item.link) {
+        return favourites.push(item);
+      }
+      return false;
+    });
+
     this.setState({
       isFavourite: true,
-      favouriteIds: this.state.favouriteIds.concat(ids),
       favourites: this.state.favourites.concat(favourites)
     });
   }
 
-  // renderFavList = () => {
-  //   console.log('test');
-  // };
-
   render() {
-    const { loading, items } = this.state;
-    // const { renderFavList } = this.props;
+    // const renderFavList = () => (
+    //   <GalleryList favourites={favourites} />
+    // );
+
+    const { loading, items } = this.state;  // favourites, isFavourite
+    localStorage.setItem('favourites', JSON.stringify(this.state.favourites));
     console.log(this.state);
+
     return (
       <div>
         {loading ? (
@@ -88,9 +85,7 @@ class Gallery extends Component {
               </Button>
             </Section>
             <GalleryList items={items} addToFavList={this.addToFavList} />
-            {/* {renderFavList ? (
-              <GalleryList items={items} addToFavList={this.addToFavList} />
-            ) : '' } */}
+            {/* {isFavourite ? renderFavList() : 'xxx'} */}
           </Section>
         )}
       </div>
