@@ -10,7 +10,7 @@ class Gallery extends Component {
     this.state = {
       loading: true,
       items: [],
-      isFavourite: false,
+      viewFavourite: false,
       favourites: []
     };
   }
@@ -21,7 +21,7 @@ class Gallery extends Component {
       this.setState({
         loading: false,
         items: response.items,
-        isFavourite: false,
+        viewFavourite: false,
         favourites: this.state.favourites
       });
     };
@@ -38,6 +38,7 @@ class Gallery extends Component {
   }
 
   addToFavList = (e) => {
+    e.preventDefault();
     const { items, favourites } = this.state;
     const id = e.currentTarget.id;
 
@@ -49,25 +50,27 @@ class Gallery extends Component {
     });
 
     this.setState({
-      isFavourite: true,
-      favourites: this.state.favourites
+      viewFavourite: false,
+      favourites
     });
 
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }
 
-  render() {
-    const { loading, items, favourites } = this.state;
-    localStorage.getItem('favourites', favourites);
+  renderFavList = () => {
+    this.setState({
+      viewFavourite: true
+    });
+  }
 
-    const renderFavList = () => (
-      <GalleryList favourites={favourites} />
-    );
+  render() {
+    const { loading, items, favourites, viewFavourite } = this.state;
+    localStorage.getItem('favourites', favourites);
 
     console.log(this.state);
 
     return (
-      <div>
+      <Section>
         {loading ? (
           <LoadingIcon
             icon={loading}
@@ -75,31 +78,41 @@ class Gallery extends Component {
             size="50px"
             verticalAlign="middle"
             fill="#ff1493"
-          />) : (
-            <Section>
+          />
+        ) : (
+          <div>
+            {viewFavourite ? (
               <Section size="sm">
-                <Button
-                  size="sm"
-                  theme="alpha"
-                  onClick={renderFavList}
-                >
-                  <Icon
-                    icon={FaAngleDoubleRight}
-                    iconPosition="right"
-                    width="50px"
-                    height="50px"
-                  >
-                    View favourites
-                  </Icon>
-                </Button>
+                <h1>Your favourites</h1>
+                <GalleryList items={favourites} />
               </Section>
-              <GalleryList
-                items={items}
-                addToFavList={this.addToFavList}
-              />
-            </Section>
-          )}
-      </div>
+            ) : (
+              <div>
+                <Section size="sm">
+                  <Button
+                    size="sm"
+                    theme="alpha"
+                    onClick={this.renderFavList}
+                  >
+                    <Icon
+                      icon={FaAngleDoubleRight}
+                      iconPosition="right"
+                      width="50px"
+                      height="50px"
+                    >
+                      View favourites
+                    </Icon>
+                  </Button>
+                </Section>
+                <GalleryList
+                  items={items}
+                  addToFavList={this.addToFavList}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </Section>
     );
   }
 }
