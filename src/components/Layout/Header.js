@@ -13,7 +13,13 @@ const Header = ({ brandText }) => (
           <Navbar.Toggle.Bars />
         </Navbar.Toggle.Wrapper>
         <Navbar.Logo to="/">
-          <Icon icon={logo} iconPosition="left" width="35px" height="35px" fill="#c3c3c3">
+          <Icon
+            icon={logo}
+            iconPosition="left"
+            width="35px"
+            height="35px"
+            fill="#c3c3c3"
+          >
             {brandText}
           </Icon>
         </Navbar.Logo>
@@ -42,13 +48,22 @@ const Header = ({ brandText }) => (
               </Navbar.Dropdown.Content>
             </Navbar.Dropdown.Wrapper>
             <Navbar.Item>
-              <Navbar.Link to="/trending/latest" className="is-active">
+              <Navbar.Link
+                to="/trending/latest"
+                className="is-active"
+              >
                 Trending
               </Navbar.Link>
             </Navbar.Item>
           </Navbar.Content>
-          <Navbar.Content right keepAtTop>
-            <Navbar.Item tag="div" resetLineHeight>
+          <Navbar.Content
+            right
+            keepAtTop
+          >
+            <Navbar.Item
+              tag="div"
+              resetLineHeight
+            >
               <Form.SearchWrapper submitPosition="right">
                 <Form.SearchInput small />
                 <Form.SearchSubmit theme="alpha" />

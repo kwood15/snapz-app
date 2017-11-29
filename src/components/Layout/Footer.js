@@ -8,9 +8,21 @@ const Footer = () => (
       <div className="c-footer__content">
         <p className="c-footer__text">&copy; Snapz. 2017</p>
         <div className="c-footer__links">
-          <Link to="/" className="c-footer__link">Facebook</Link>
-          <Link to="/" className="c-footer__link">Twitter</Link>
-          <Link to="/" className="c-footer__link">Google+</Link>
+          <Link
+            to="/"
+            className="c-footer__link"
+          >Facebook
+          </Link>
+          <Link
+            to="/"
+            className="c-footer__link"
+          >Twitter
+          </Link>
+          <Link
+            to="/"
+            className="c-footer__link"
+          >Google+
+          </Link>
         </div>
       </div>
     </Section>

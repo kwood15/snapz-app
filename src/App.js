@@ -10,9 +10,15 @@ import Footer from './components/Layout/Footer';
 
 const App = () => (
   <Section>
-    <Route exact path="/" />
+    <Route
+      exact
+      path="/"
+    />
     <Route path="/you" />
-    <Route path="/explore/create" component={Create} />
+    <Route
+      path="/explore/create"
+      component={Create}
+    />
     <Route path="/explore/upload" />
     <Route path="/trending/latest" />
     <Header />

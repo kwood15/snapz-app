@@ -40,7 +40,13 @@ class GalleryItem extends Component {
     const renderPhotoTag = () => {
       const tags = item.tags.split(' ').slice(1, 6);
       return tags.map(tag => (
-        <Link to="/" key={tag} className="c-tags__item">{tag}</Link>
+        <Link
+          to="/"
+          key={tag}
+          className="c-tags__item"
+        >
+          {tag}
+        </Link>
       ));
     };
 
@@ -49,33 +55,71 @@ class GalleryItem extends Component {
         <Card.Wrapper>
           <Card.Body>
             <div className="c-card__image-wrap">
-              <a href="" onClick={addToFavList}>
-                <img src={item.media.m} alt={item.title} className="c-card__image" />
+              <a
+                href=""
+                onClick={addToFavList}
+              >
+                <img
+                  src={item.media.m}
+                  alt={item.title}
+                  className="c-card__image"
+                />
               </a>
             </div>
             <p><strong>{item.title}</strong></p>
             <div className="u-text-center">
               <Tooltip.Wrapper>
-                <Button size="sm" theme="alpha" className="c-btn--circle" tag="a" to="#" id={id} onClick={addToFavList}>
+                <Button
+                  size="sm"
+                  theme="alpha"
+                  className="c-btn--circle"
+                  tag="a"
+                  to="#"
+                  id={id}
+                  onClick={addToFavList}
+                >
                   <MdFavoriteOutline size={24} />
                 </Button>
-                <Tooltip.Content direction="south" width="120px">
+                <Tooltip.Content
+                  direction="south"
+                  width="120px"
+                >
                   Love this!
                 </Tooltip.Content>
               </Tooltip.Wrapper>
               <Tooltip.Wrapper>
-                <Button size="sm" theme="beta" className="c-btn--circle" tag="a" to="#" id={id}>
+                <Button
+                  size="sm"
+                  theme="beta"
+                  className="c-btn--circle"
+                  tag="a"
+                  to="#"
+                  id={id}
+                >
                   <TiArrowForwardOutline size={24} />
                 </Button>
-                <Tooltip.Content direction="south" width="120px">
+                <Tooltip.Content
+                  direction="south"
+                  width="120px"
+                >
                   Share this!
                 </Tooltip.Content>
               </Tooltip.Wrapper>
               <Tooltip.Wrapper>
-                <Button size="sm" className="c-btn--success c-btn--circle" tag="a" to="#" id={id} onClick={this.openModal}>
+                <Button
+                  size="sm"
+                  className="c-btn--success c-btn--circle"
+                  tag="a"
+                  to="#"
+                  id={id}
+                  onClick={this.openModal}
+                >
                   <MdMoreHoriz size={24} />
                 </Button>
-                <Tooltip.Content direction="south" width="120px">
+                <Tooltip.Content
+                  direction="south"
+                  width="120px"
+                >
                   See more!
                 </Tooltip.Content>
               </Tooltip.Wrapper>
@@ -83,7 +127,11 @@ class GalleryItem extends Component {
           </Card.Body>
         </Card.Wrapper>
         {this.state.isModalOpen && (
-          <Modal.Wrapper closeModal={this.handleClose} id="c-modal-gallery" ariaLabel="Gallery Modal">
+          <Modal.Wrapper
+            closeModal={this.handleClose}
+            id="c-modal-gallery"
+            ariaLabel="Gallery Modal"
+          >
             <Modal.Overlay clickToClose />
             <Modal.Body>
               <div className="c-modal__header">

@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { LoadingIcon, Section, Button, Icon } from 'nebula-react';
 import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
 
 import GalleryList from './List';
 
 class Gallery extends Component {
-  // static propTypes = {
-  //   favourites: PropTypes.arrayOf(PropTypes.shape({
-  //     favourite: PropTypes.string
-  //   }))
-  // }
-
   constructor() {
     super();
     this.state = {
@@ -45,49 +38,67 @@ class Gallery extends Component {
   }
 
   addToFavList = (e) => {
-    const { items } = this.state;
+    const { items, favourites } = this.state;
     const id = e.currentTarget.id;
-    const favourites = [];
 
     items.map((item) => {
       if (id === item.link) {
-        return favourites.push(item);
+        favourites.push(item);
       }
       return false;
     });
 
     this.setState({
       isFavourite: true,
-      favourites: this.state.favourites.concat(favourites)
+      favourites: this.state.favourites
     });
+
+    localStorage.setItem('favourites', JSON.stringify(favourites));
   }
 
   render() {
-    // const renderFavList = () => (
-    //   <GalleryList favourites={favourites} />
-    // );
+    const { loading, items, favourites } = this.state;
+    localStorage.getItem('favourites', favourites);
 
-    const { loading, items } = this.state;  // favourites, isFavourite
-    localStorage.setItem('favourites', JSON.stringify(this.state.favourites));
+    const renderFavList = () => (
+      <GalleryList favourites={favourites} />
+    );
+
     console.log(this.state);
 
     return (
       <div>
         {loading ? (
-          <LoadingIcon icon={loading} loading={loading} size="50px" verticalAlign="middle" fill="#ff1493" />
-        ) : (
-          <Section>
-            <Section size="sm">
-              <Button size="sm" theme="alpha" onClick={this.renderFavList}>
-                <Icon icon={FaAngleDoubleRight} iconPosition="right" width="50px" height="50px">
-                  View favourites
-                </Icon>
-              </Button>
+          <LoadingIcon
+            icon={loading}
+            loading={loading}
+            size="50px"
+            verticalAlign="middle"
+            fill="#ff1493"
+          />) : (
+            <Section>
+              <Section size="sm">
+                <Button
+                  size="sm"
+                  theme="alpha"
+                  onClick={renderFavList}
+                >
+                  <Icon
+                    icon={FaAngleDoubleRight}
+                    iconPosition="right"
+                    width="50px"
+                    height="50px"
+                  >
+                    View favourites
+                  </Icon>
+                </Button>
+              </Section>
+              <GalleryList
+                items={items}
+                addToFavList={this.addToFavList}
+              />
             </Section>
-            <GalleryList items={items} addToFavList={this.addToFavList} />
-            {/* {isFavourite ? renderFavList() : 'xxx'} */}
-          </Section>
-        )}
+          )}
       </div>
     );
   }
