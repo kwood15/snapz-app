@@ -12,7 +12,8 @@ class GalleryItem extends Component {
     addToFavList: PropTypes.func,
     item: PropTypes.shape({
       media: PropTypes.object
-    })
+    }),
+    hasTriggered: PropTypes.bool
   }
 
   constructor() {
@@ -35,7 +36,7 @@ class GalleryItem extends Component {
   }
 
   render() {
-    const { item, addToFavList, id } = this.props;
+    const { item, addToFavList, id, hasTriggered } = this.props;
 
     const renderPhotoTag = () => {
       const tags = item.tags.split(' ').slice(1, 6);
@@ -69,17 +70,30 @@ class GalleryItem extends Component {
             <p><strong>{item.title}</strong></p>
             <div className="u-text-center">
               <Tooltip.Wrapper>
-                <Button
-                  size="sm"
-                  theme="alpha"
-                  className="c-btn--circle"
-                  tag="a"
-                  to="#"
-                  id={id}
-                  onClick={addToFavList}
-                >
-                  <MdFavoriteOutline size={24} />
-                </Button>
+                {!hasTriggered ? (
+                  <Button
+                    size="sm"
+                    theme="alpha"
+                    className="c-btn--circle"
+                    tag="a"
+                    to="#"
+                    id={id}
+                    onClick={addToFavList}
+                  >
+                    <MdFavoriteOutline size={24} />
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    className="c-btn--circle"
+                    tag="a"
+                    to="#"
+                    id={id}
+                    disabled
+                  >
+                    <MdFavoriteOutline size={24} />
+                  </Button>
+                )}
                 <Tooltip.Content
                   direction="south"
                   width="120px"

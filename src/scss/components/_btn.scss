@@ -1,3 +1,13 @@
+.c-btn[disabled] {
+  background: $nb-color-grey-light;
+  color: $nb-color-white;
+  cursor: not-allowed;
+}
+
+.c-btn[disabled] + .c-tooltip__content {
+  transform: scale(0);
+}
+
 .c-btn--success {
   @include btn-color($nb-color-success);
 }

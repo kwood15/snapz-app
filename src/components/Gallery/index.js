@@ -10,8 +10,9 @@ class Gallery extends Component {
     this.state = {
       loading: true,
       items: [],
-      viewFavourite: false,
-      favourites: []
+      viewFavourites: false,
+      favourites: [],
+      hasTriggered: false
     };
   }
 
@@ -21,8 +22,9 @@ class Gallery extends Component {
       this.setState({
         loading: false,
         items: response.items,
-        viewFavourite: false,
-        favourites: this.state.favourites
+        viewFavourites: false,
+        favourites: this.state.favourites,
+        hasTriggered: false
       });
     };
   }
@@ -38,7 +40,6 @@ class Gallery extends Component {
   }
 
   addToFavList = (e) => {
-    e.preventDefault();
     const { items, favourites } = this.state;
     const id = e.currentTarget.id;
 
@@ -50,7 +51,8 @@ class Gallery extends Component {
     });
 
     this.setState({
-      viewFavourite: false,
+      hasTriggered: true,
+      viewFavourites: false,
       favourites
     });
 
@@ -59,12 +61,12 @@ class Gallery extends Component {
 
   renderFavList = () => {
     this.setState({
-      viewFavourite: true
+      viewFavourites: true
     });
   }
 
   render() {
-    const { loading, items, favourites, viewFavourite } = this.state;
+    const { loading, items, favourites, viewFavourites, hasTriggered } = this.state;
     localStorage.getItem('favourites', favourites);
 
     console.log(this.state);
@@ -81,14 +83,18 @@ class Gallery extends Component {
           />
         ) : (
           <div>
-            {viewFavourite ? (
+            {viewFavourites ? (
               <Section size="sm">
                 <h1>Your favourites</h1>
-                <GalleryList items={favourites} />
+                <GalleryList
+                  items={favourites}
+                  hasTriggered={hasTriggered}
+                />
               </Section>
             ) : (
               <div>
                 <Section size="sm">
+                  <h1>Face of the day on Snapz!</h1>
                   <Button
                     size="sm"
                     theme="alpha"
@@ -107,6 +113,7 @@ class Gallery extends Component {
                 <GalleryList
                   items={items}
                   addToFavList={this.addToFavList}
+                  hasTriggered={hasTriggered}
                 />
               </div>
             )}
