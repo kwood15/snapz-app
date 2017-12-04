@@ -4,7 +4,7 @@ import { Grid } from 'nebula-react';
 
 import GalleryItem from './Item';
 
-const GalleryList = ({ items, addToFavList, hasTriggered }) => (
+const GalleryList = ({ items, addToFavList }) => (
   <Grid.Wrapper
     equalHeight
     matrix
@@ -16,7 +16,6 @@ const GalleryList = ({ items, addToFavList, hasTriggered }) => (
         id={item.link}
         key={item.link}
         addToFavList={addToFavList}
-        hasTriggered={hasTriggered}
       />
     ))}
   </Grid.Wrapper>
@@ -26,8 +25,7 @@ GalleryList.propTypes = {
   addToFavList: PropTypes.func,
   items: PropTypes.arrayOf(PropTypes.shape({
     item: PropTypes.string
-  })),
-  hasTriggered: PropTypes.bool
+  }))
 };
 
 export default GalleryList;

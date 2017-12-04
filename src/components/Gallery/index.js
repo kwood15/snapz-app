@@ -10,9 +10,8 @@ class Gallery extends Component {
     this.state = {
       loading: true,
       items: [],
-      viewFavourites: false,
       favourites: [],
-      hasTriggered: false
+      viewFavourites: false
     };
   }
 
@@ -22,9 +21,8 @@ class Gallery extends Component {
       this.setState({
         loading: false,
         items: response.items,
-        viewFavourites: false,
         favourites: this.state.favourites,
-        hasTriggered: false
+        viewFavourites: false
       });
     };
   }
@@ -40,35 +38,37 @@ class Gallery extends Component {
   }
 
   addToFavList = (e) => {
+    e.preventDefault();
     const { items, favourites } = this.state;
     const id = e.currentTarget.id;
 
     items.map((item) => {
       if (id === item.link) {
         favourites.push(item);
+        const filtered = favourites
+        .map(filteredItem => filteredItem)
+        .filter((filteredItem, filteredId, arr) => arr.indexOf(filteredItem) === filteredId);
+        this.setState({
+          favourites: filtered
+        });
+        localStorage.setItem('favourites', JSON.stringify(filtered));
       }
       return false;
     });
-
-    this.setState({
-      hasTriggered: true,
-      viewFavourites: false,
-      favourites
-    });
-
-    localStorage.setItem('favourites', JSON.stringify(favourites));
   }
 
   renderFavList = () => {
-    this.setState({
-      viewFavourites: true
-    });
+    const cached = localStorage.getItem('favourites');
+    if (cached) {
+      this.setState({
+        viewFavourites: true,
+        favourites: JSON.parse(cached)
+      });
+    }
   }
 
   render() {
-    const { loading, items, favourites, viewFavourites, hasTriggered } = this.state;
-    localStorage.getItem('favourites', favourites);
-
+    const { loading, items, favourites, viewFavourites } = this.state;
     console.log(this.state);
 
     return (
@@ -84,12 +84,9 @@ class Gallery extends Component {
         ) : (
           <div>
             {viewFavourites ? (
-              <Section size="sm">
+              <Section size="sm" >
                 <h1>Your favourites</h1>
-                <GalleryList
-                  items={favourites}
-                  hasTriggered={hasTriggered}
-                />
+                <GalleryList items={favourites} />
               </Section>
             ) : (
               <div>
@@ -113,7 +110,6 @@ class Gallery extends Component {
                 <GalleryList
                   items={items}
                   addToFavList={this.addToFavList}
-                  hasTriggered={hasTriggered}
                 />
               </div>
             )}

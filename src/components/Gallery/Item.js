@@ -12,8 +12,7 @@ class GalleryItem extends Component {
     addToFavList: PropTypes.func,
     item: PropTypes.shape({
       media: PropTypes.object
-    }),
-    hasTriggered: PropTypes.bool
+    })
   }
 
   constructor() {
@@ -36,7 +35,7 @@ class GalleryItem extends Component {
   }
 
   render() {
-    const { item, addToFavList, id, hasTriggered } = this.props;
+    const { item, addToFavList, id } = this.props;
 
     const renderPhotoTag = () => {
       const tags = item.tags.split(' ').slice(1, 6);
@@ -45,8 +44,7 @@ class GalleryItem extends Component {
           to="/"
           key={tag}
           className="c-tags__item"
-        >
-          {tag}
+        >{tag}
         </Link>
       ));
     };
@@ -56,10 +54,7 @@ class GalleryItem extends Component {
         <Card.Wrapper>
           <Card.Body>
             <div className="c-card__image-wrap">
-              <a
-                href=""
-                onClick={addToFavList}
-              >
+              <a href={item.link}>
                 <img
                   src={item.media.m}
                   alt={item.title}
@@ -70,30 +65,15 @@ class GalleryItem extends Component {
             <p><strong>{item.title}</strong></p>
             <div className="u-text-center">
               <Tooltip.Wrapper>
-                {!hasTriggered ? (
-                  <Button
-                    size="sm"
-                    theme="alpha"
-                    className="c-btn--circle"
-                    tag="a"
-                    to="#"
-                    id={id}
-                    onClick={addToFavList}
-                  >
-                    <MdFavoriteOutline size={24} />
-                  </Button>
-                ) : (
-                  <Button
-                    size="sm"
-                    className="c-btn--circle"
-                    tag="a"
-                    to="#"
-                    id={id}
-                    disabled
-                  >
-                    <MdFavoriteOutline size={24} />
-                  </Button>
-                )}
+                <Button
+                  size="sm"
+                  theme="alpha"
+                  className="c-btn--circle"
+                  id={id}
+                  onClick={addToFavList}
+                >
+                  <MdFavoriteOutline size={24} />
+                </Button>
                 <Tooltip.Content
                   direction="south"
                   width="120px"
@@ -123,8 +103,6 @@ class GalleryItem extends Component {
                 <Button
                   size="sm"
                   className="c-btn--success c-btn--circle"
-                  tag="a"
-                  to="#"
                   id={id}
                   onClick={this.openModal}
                 >
