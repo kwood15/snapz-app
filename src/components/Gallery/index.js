@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { LoadingIcon, Section, Button, Icon } from 'nebula-react';
 import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
 
+// import data from './api/photos_public.json';
+
 import GalleryList from './List';
 
 class Gallery extends Component {
@@ -26,6 +28,15 @@ class Gallery extends Component {
       });
     };
   }
+
+  // Mock data
+  // getData = () => {
+  //   const url = data;
+  //   const script = document.createElement('script');
+  //   script.type = 'text/javascript';
+  //   script.src = `${url}`;
+  //   document.body.append(script);
+  // }
 
   getData = () => {
     const url = 'http://api.flickr.com/services/feeds/photos_public.gne';

@@ -1,4 +1,4 @@
-# Snapz App
+# Snapz App [![Build Status](https://travis-ci.org/kwood15/snapz-app.svg?branch=master)](https://travis-ci.org/kwood15/snapz-app)
 
 A React App which queries the Flickr API
 
