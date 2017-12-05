@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Form, Icon } from 'nebula-react';
 
-import logo from '../../img/logo.svg';
+import logo from 'img/logo.svg';
 
 const Header = ({ brandText }) => (
   <header>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { LoadingIcon, Section, Button, Icon } from 'nebula-react';
 import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
-
-// import data from './api/photos_public.json';
+// import data from 'api/data.json';
+// import mock from 'api/mock';
 
 import GalleryList from './List';
 
@@ -17,6 +17,21 @@ class Gallery extends Component {
     };
   }
 
+  // Mock Data Request
+  // componentDidMount() {
+  //   this.mockRequest();
+  // }
+
+  // mockRequest = () => {
+  //   mock.getData();
+  //   this.setState({
+  //     loading: false,
+  //     items: data.items,
+  //     favourites: this.state.favourites,
+  //     viewFavourites: false
+  //   });
+  // }
+
   componentDidMount() {
     this.getData();
     window.getData = (response) => {
@@ -29,21 +44,11 @@ class Gallery extends Component {
     };
   }
 
-  // Mock data
-  // getData = () => {
-  //   const url = data;
-  //   const script = document.createElement('script');
-  //   script.type = 'text/javascript';
-  //   script.src = `${url}`;
-  //   document.body.append(script);
-  // }
-
   getData = () => {
     const url = 'http://api.flickr.com/services/feeds/photos_public.gne';
     const callback = 'getData';
     const tags = 'lama, funny';
     const script = document.createElement('script');
-    script.type = 'text/javascript';
     script.src = `${url}?format=json&jsoncallback=${callback}&tags=${tags}`;
     document.body.append(script);
   }

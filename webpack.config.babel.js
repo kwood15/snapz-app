@@ -39,6 +39,10 @@ const common = {
         }]
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         use: [{

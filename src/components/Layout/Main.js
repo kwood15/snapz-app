@@ -1,7 +1,7 @@
 import React from 'react';
 import { Section, SiteWrap } from 'nebula-react';
 
-import Gallery from '../../components/Gallery/index';
+import Gallery from 'components/Gallery';
 
 const Main = () => (
   <Section size="md">

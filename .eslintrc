@@ -17,6 +17,7 @@
     "react/jsx-max-props-per-line": [1, { "maximum": 1 }] 
   },
   "settings": {
-    "import/parser": "babel-eslint"
+    "import/parser": "babel-eslint",
+    "import/resolver": "webpack"
   }
 }
