@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { Navbar, Form, Icon } from 'nebula-react';
 
 import logo from 'img/logo.svg';
@@ -36,7 +37,10 @@ const Header = ({ brandText }) => (
               </Navbar.Dropdown.Toggle>
               <Navbar.Dropdown.Content>
                 <Navbar.Item>
-                  <Navbar.Link to="/explore/create">
+                  <Navbar.Link
+                    component={NavLink}
+                    to="/explore/create"
+                  >
                     Create
                   </Navbar.Link>
                 </Navbar.Item>

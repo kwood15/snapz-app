@@ -1,12 +1,12 @@
 import React from 'react';
 import { Section, SiteWrap } from 'nebula-react';
 
-import Gallery from 'components/Gallery';
+import Routing from 'Routing';
 
 const Main = () => (
   <Section size="md">
     <SiteWrap padding>
-      <Gallery />
+      <Routing />
     </SiteWrap>
   </Section>
 );
