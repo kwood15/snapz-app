@@ -1,9 +1,8 @@
 .c-tags {
   display: flex;
-  overflow-y: hidden;
+  flex-wrap: wrap;
   border-top: 1px solid $nb-color-base-border;
   padding-top: $nb-spacing-unit;
-  padding-bottom: $nb-spacing-unit-double;
 }
 
 .c-tags__item {
@@ -14,6 +13,7 @@
   padding-left: ($nb-spacing-unit + $nb-spacing-unit-third);
   padding-right: ($nb-spacing-unit + $nb-spacing-unit-third);
   margin-right: $nb-spacing-unit-third;
+  margin-bottom: $nb-spacing-unit-half;
   transition: color $nb-transition-duration;
   font-weight: bold;
   text-decoration: none;
@@ -39,17 +39,11 @@
   }
 
   &::after {
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    border-bottom: 13px solid transparent;
-    border-left: 10px solid $nb-color-alpha;
+    top: 0;
+    right: 0;
+    bottom: 0;
     border-top: 13px solid transparent;
-  }
-}
-
-@media (min-width: 800px) {
-  .c-tags__item {
-    line-height: 1.6rem;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid $nb-color-alpha;
   }
 }
