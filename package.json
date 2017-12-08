@@ -14,13 +14,16 @@
     "test:ci": "yarn lint && yarn unit:ci"
   },
   "dependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "nebula-react": "^0.8.1",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "prop-types": "^15.6.0",
-    "react-router-dom": "^4.2.2",
-    "nebula-react": "^0.8.1",
     "react-html-parser": "^2.0.1",
-    "react-icons": "^2.2.7"
+    "react-icons": "^2.2.7",
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -61,12 +64,7 @@
   },
   "jest": {
     "rootDir": "./src",
-    "resetMocks": true,
-    "resetModules": true,
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
+    "setupFiles": ["<rootDir>/tempPolyfills.js", "<rootDir>/setupTests.js"],
     "collectCoverageFrom": [
       "**/*.{js,jsx}"
     ]

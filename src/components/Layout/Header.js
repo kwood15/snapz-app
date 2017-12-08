@@ -27,7 +27,10 @@ const Header = ({ brandText }) => (
         <Navbar.ContentWrapper>
           <Navbar.Content>
             <Navbar.Item>
-              <Navbar.Link to="/you/profile">
+              <Navbar.Link
+                to="/you"
+                component={NavLink}
+              >
                 You
               </Navbar.Link>
             </Navbar.Item>
@@ -38,14 +41,17 @@ const Header = ({ brandText }) => (
               <Navbar.Dropdown.Content>
                 <Navbar.Item>
                   <Navbar.Link
-                    component={NavLink}
                     to="/explore/create"
+                    component={NavLink}
                   >
                     Create
                   </Navbar.Link>
                 </Navbar.Item>
                 <Navbar.Item>
-                  <Navbar.Link to="/explore/upload">
+                  <Navbar.Link
+                    to="/explore/upload"
+                    component={NavLink}
+                  >
                     Upload
                   </Navbar.Link>
                 </Navbar.Item>
@@ -53,8 +59,8 @@ const Header = ({ brandText }) => (
             </Navbar.Dropdown.Wrapper>
             <Navbar.Item>
               <Navbar.Link
-                to="/trending/latest"
-                className="is-active"
+                to="/trending"
+                component={NavLink}
               >
                 Trending
               </Navbar.Link>

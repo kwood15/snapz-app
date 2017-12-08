@@ -11,8 +11,12 @@ class GalleryItem extends Component {
     id: PropTypes.string,
     addToFavList: PropTypes.func,
     item: PropTypes.shape({
-      media: PropTypes.object
-    })
+      title: PropTypes.string,
+      link: PropTypes.string,
+      media: PropTypes.shape({
+        m: PropTypes.string
+      })
+    }).isRequired
   }
 
   constructor() {
@@ -50,17 +54,20 @@ class GalleryItem extends Component {
     };
 
     return (
-      <Grid.Item width={['1/2', '1/3@sm', '1/4@md']}>
+      <Grid.Item
+        width={['1/2', '1/3@sm', '1/4@md']}
+        className="c-gallery__item"
+      >
         <Card.Wrapper>
           <Card.Body>
             <div className="c-card__image-wrap">
-              <a href={item.link}>
+              <Link to={item.link}>
                 <img
                   src={item.media.m}
                   alt={item.title}
                   className="c-card__image"
                 />
-              </a>
+              </Link>
             </div>
             <p><strong>{item.title}</strong></p>
             <div className="u-text-center">
@@ -69,7 +76,7 @@ class GalleryItem extends Component {
                   size="sm"
                   theme="alpha"
                   className="c-btn--circle"
-                  id={id}
+                  id={item.link}
                   onClick={addToFavList}
                 >
                   <MdFavoriteOutline size={24} />

@@ -1,11 +1,15 @@
-import Gallery from './Gallery';
-import Create from './Create';
+import You from './You';
 import Explore from './Explore';
+import Create from './Create';
+import Upload from './Upload';
+import Trending from './Trending';
 
 const Pages = {
-  Gallery,
+  You,
+  Explore,
   Create,
-  Explore
+  Upload,
+  Trending
 };
 
 export { Pages };
